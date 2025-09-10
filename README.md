@@ -16,7 +16,7 @@ Below are instructions for opening and using the application, as well as other i
 2. Use that link to navigate to the repository created for this application
 3. Make a pull request and pull the code onto your chosen IDE
 
-Side Notes:
+<h6>Side Notes:</h6>
 Once a report is submitted, it is saved as a JSON file (issues.json).
 By default, the file is located at a path similar to:
 C:\Users\Bradley\source\repos\PROG7312-POE-ST10300512\PROG7312-POE-ST10300512\bin\Debug\net8.0-windows
