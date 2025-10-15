@@ -14,6 +14,7 @@
         private System.Windows.Forms.DateTimePicker dtTo;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.ListBox lstResults;
+        private System.Windows.Forms.Label lblRecom;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Label lblHint;
 
@@ -39,6 +40,7 @@
             lstResults = new ListBox();
             btnBack = new Button();
             lblHint = new Label();
+            lblRecom = new Label();
             hdrPanel.SuspendLayout();
             grpEventFilters.SuspendLayout();
             SuspendLayout();
@@ -101,7 +103,7 @@
             dtTo.Size = new Size(140, 25);
 
             // btnSearch
-            btnSearch.BackColor = Color.SeaGreen; 
+            btnSearch.BackColor = Color.SeaGreen;
             btnSearch.FlatAppearance.BorderSize = 0;
             btnSearch.FlatStyle = FlatStyle.Flat;
             btnSearch.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
@@ -114,33 +116,45 @@
             // lstResults
             lstResults.ItemHeight = 15;
             lstResults.Location = new Point(40, 220);
-            lstResults.Size = new Size(720, 274);
+            lstResults.Size = new Size(720, 230);
             lstResults.DoubleClick += lstResults_DoubleClick;
 
-            // btnBack
-            btnBack.BackColor = Color.DimGray; 
-            btnBack.FlatAppearance.BorderSize = 0;
-            btnBack.FlatStyle = FlatStyle.Flat;
-            btnBack.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnBack.ForeColor = Color.White;
-            btnBack.Location = new Point(620, 520);
-            btnBack.Size = new Size(140, 35);
-            btnBack.Text = "Back to Main Menu";
-            btnBack.Click += btnBack_Click;
+            // lblRecom
+            lblRecom.Font = new Font("Segoe UI", 9F, FontStyle.Italic);
+            lblRecom.ForeColor = Color.DimGray;
+            lblRecom.BackColor = Color.WhiteSmoke;
+            lblRecom.Location = new Point(40, 460); 
+            lblRecom.Size = new Size(700, 65);       
+            lblRecom.AutoSize = false;
+            lblRecom.TextAlign = ContentAlignment.TopLeft;
+            lblRecom.Text = "";
+            lblRecom.BringToFront();
 
             // lblHint
             lblHint.AutoSize = true;
             lblHint.Font = new Font("Segoe UI", 9F, FontStyle.Italic);
-            lblHint.ForeColor = Color.Gray; 
-            lblHint.Location = new Point(40, 510);
+            lblHint.ForeColor = Color.Gray;
+            lblHint.Location = new Point(40, 535);   
             lblHint.Text = "Double click an event to view more info";
+
+            // btnBack
+            btnBack.BackColor = Color.DimGray;
+            btnBack.FlatAppearance.BorderSize = 0;
+            btnBack.FlatStyle = FlatStyle.Flat;
+            btnBack.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnBack.ForeColor = Color.White;
+            btnBack.Location = new Point(620, 525);
+            btnBack.Size = new Size(150, 40);
+            btnBack.Text = "Back to Main Menu";
+            btnBack.Click += btnBack_Click;
 
             // LocalEventsForm
             BackColor = Color.WhiteSmoke;
-            ClientSize = new Size(800, 600);
+            ClientSize = new Size(800, 640);
             Controls.Add(hdrPanel);
             Controls.Add(grpEventFilters);
             Controls.Add(lstResults);
+            Controls.Add(lblRecom);
             Controls.Add(lblHint);
             Controls.Add(btnBack);
             StartPosition = FormStartPosition.CenterParent;
