@@ -64,7 +64,11 @@ namespace PROG7312_POE_ST10300512
                 new Event { Title="Water Maintenance", Category="Utilities", Location="Green Point", Date=DateTime.Now.AddDays(2), Description="Water line maintenance" },
                 new Event { Title="Recycling Drive", Category="Environment", Location="Sea Point", Date=DateTime.Now.AddDays(5), Description="Community recycling drive" },
                 new Event { Title="Road Closure Notice", Category="Roads", Location="Rondebosch", Date=DateTime.Now.AddDays(1), Description="Re-tarring of roads notice" },
-                new Event { Title="Crime Awareness Warnings", Category="Public Safety", Location="Fish Hoek", Date=DateTime.Now.AddDays(3), Description="Crime awareness discussion" }
+                new Event { Title="Crime Awareness Warnings", Category="Public Safety", Location="Fish Hoek", Date=DateTime.Now.AddDays(3), Description="Crime awareness discussion" },
+                new Event { Title="Water Testing", Category="Utilities", Location="Constantia", Date=DateTime.Now.AddDays(4), Description="Testing of water safety" },
+                new Event { Title="Beach Clean up", Category="Environment", Location="Somerset West", Date=DateTime.Now.AddDays(10), Description="Community driven litter pick up" },
+                new Event { Title="Road Disaster", Category="Roads", Location="Claremont", Date=DateTime.Now.AddDays(6), Description="Roads flooded" },
+                new Event { Title="Neighborhood watch", Category="Public Safety", Location="Blouberg", Date=DateTime.Now.AddDays(-1), Description="Join the neighborhood watch" }
             };
 
             foreach (var newEvent in sampleEvents)
