@@ -1,5 +1,4 @@
-﻿// MainMenu.Designer.cs
-namespace PROG7312_POE_ST10300512
+﻿namespace PROG7312_POE_ST10300512
 {
     partial class MainMenu
     {
@@ -13,13 +12,9 @@ namespace PROG7312_POE_ST10300512
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
-            {
                 components.Dispose();
-            }
             base.Dispose(disposing);
         }
-
-        #region Windows Form Designer generated code
 
         private void InitializeComponent()
         {
@@ -29,72 +24,66 @@ namespace PROG7312_POE_ST10300512
             this.lblTitle = new Label();
             this.headerPanel = new Panel();
             this.SuspendLayout();
-            // 
-            // headerPanel
-            // 
-            this.headerPanel.BackColor = System.Drawing.Color.FromArgb(0, 102, 204); // Municipal blue
-            this.headerPanel.Dock = DockStyle.Top;
-            this.headerPanel.Height = 80;
-            this.headerPanel.Controls.Add(this.lblTitle);
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
-            this.lblTitle.ForeColor = Color.White;
-            this.lblTitle.Dock = DockStyle.Fill;
-            this.lblTitle.Text = "Municipality Services";
-            this.lblTitle.TextAlign = ContentAlignment.MiddleCenter;
-             
-            // btnReportIssue - Button to create a report
-            
-            this.btnReportIssue.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            this.btnReportIssue.BackColor = Color.FromArgb(0, 153, 76); // green
-            this.btnReportIssue.ForeColor = Color.White;
-            this.btnReportIssue.FlatStyle = FlatStyle.Flat;
-            this.btnReportIssue.FlatAppearance.BorderSize = 0;
-            this.btnReportIssue.Location = new Point(280, 120);
-            this.btnReportIssue.Size = new Size(240, 60);
-            this.btnReportIssue.Text = "📌 Report an Issue";
-            this.btnReportIssue.Click += btnReportIssue_Click;
-             
-            // btnLocalEvents - WIP for Part  (disabled)
-            
-            this.btnLocalEvents.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            this.btnLocalEvents.BackColor = Color.FromArgb(255, 204, 0); // yellow
-            this.btnLocalEvents.ForeColor = Color.Black;
-            this.btnLocalEvents.FlatStyle = FlatStyle.Flat;
-            this.btnLocalEvents.FlatAppearance.BorderSize = 0;
-            this.btnLocalEvents.Location = new Point(280, 200);
-            this.btnLocalEvents.Size = new Size(240, 60);
-            this.btnLocalEvents.Text = "📅 Local Events (Coming Soon)";
-            this.btnLocalEvents.Enabled = false;
-            this.btnLocalEvents.Click += btnLocalEvents_Click;
-             
-            // btnServiceStatus - WIP for Part  (disabled)
-             
-            this.btnServiceStatus.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            this.btnServiceStatus.BackColor = Color.FromArgb(220, 53, 69); // red
-            this.btnServiceStatus.ForeColor = Color.White;
-            this.btnServiceStatus.FlatStyle = FlatStyle.Flat;
-            this.btnServiceStatus.FlatAppearance.BorderSize = 0;
-            this.btnServiceStatus.Location = new Point(280, 280);
-            this.btnServiceStatus.Size = new Size(240, 60);
-            this.btnServiceStatus.Text = "⚙️ Service Status (Coming Soon)";
-            this.btnServiceStatus.Enabled = false;
-             
-            // MainMenu
-             
-            this.BackColor = Color.WhiteSmoke;
-            this.ClientSize = new Size(800, 450);
-            this.Controls.Add(this.headerPanel);
-            this.Controls.Add(this.btnReportIssue);
-            this.Controls.Add(this.btnLocalEvents);
-            this.Controls.Add(this.btnServiceStatus);
-            this.StartPosition = FormStartPosition.CenterScreen;
-            this.Text = "Main Menu";
-            this.ResumeLayout(false);
-        }
 
-        #endregion
+            // headerPanel
+            headerPanel.BackColor = Color.SteelBlue;
+            headerPanel.Dock = DockStyle.Top;
+            headerPanel.Height = 80;
+            headerPanel.Controls.Add(lblTitle);
+
+            // lblTitle
+            lblTitle.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
+            lblTitle.ForeColor = Color.White;
+            lblTitle.Dock = DockStyle.Fill;
+            lblTitle.Text = "Municipality Services";
+            lblTitle.TextAlign = ContentAlignment.MiddleCenter;
+
+            // Report Issue button
+            btnReportIssue.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnReportIssue.BackColor = Color.SeaGreen;
+            btnReportIssue.ForeColor = Color.White;
+            btnReportIssue.FlatStyle = FlatStyle.Flat;
+            btnReportIssue.FlatAppearance.BorderSize = 0;
+            btnReportIssue.Location = new Point(280, 120);
+            btnReportIssue.Size = new Size(240, 60);
+            btnReportIssue.Text = "Report an Issue";
+            btnReportIssue.Click += btnReportIssue_Click;
+
+            // Local Events button (Part 2)
+            btnLocalEvents.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnLocalEvents.BackColor = Color.Gold;
+            btnLocalEvents.ForeColor = Color.Black;
+            btnLocalEvents.FlatStyle = FlatStyle.Flat;
+            btnLocalEvents.FlatAppearance.BorderSize = 0;
+            btnLocalEvents.Location = new Point(280, 200);
+            btnLocalEvents.Size = new Size(240, 60);
+            btnLocalEvents.Text = "Local Events";
+            btnLocalEvents.Click += btnLocalEvents_Click;
+
+            // Service Status button (Part 3 - WIP)
+            btnServiceStatus.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnServiceStatus.BackColor = Color.IndianRed;
+            btnServiceStatus.ForeColor = Color.White;
+            btnServiceStatus.FlatStyle = FlatStyle.Flat;
+            btnServiceStatus.FlatAppearance.BorderSize = 0;
+            btnServiceStatus.Location = new Point(280, 280);
+            btnServiceStatus.Size = new Size(240, 60);
+            btnServiceStatus.Text = "Service Status (Coming Soon)";
+            btnServiceStatus.Enabled = false;
+
+            // MainMenu
+            BackColor = Color.WhiteSmoke;
+            ClientSize = new Size(800, 450);
+            Controls.Add(headerPanel);
+            Controls.Add(btnReportIssue);
+            Controls.Add(btnLocalEvents);
+            Controls.Add(btnServiceStatus);
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Main Menu";
+
+            ResumeLayout(false);
+        }
     }
 }
+
+/*----------------|||||||||||||||-------------------END OF FILE----------------|||||||||||||||-------------------*/
