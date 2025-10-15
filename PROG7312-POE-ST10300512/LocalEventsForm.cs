@@ -12,6 +12,9 @@ namespace PROG7312_POE_ST10300512
 {
     public partial class LocalEventsForm : Form
     {
+        // tracks user searches
+        private Dictionary<string, int> searchHistory = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
+
         public LocalEventsForm()
         {
             InitializeComponent();
@@ -39,8 +42,9 @@ namespace PROG7312_POE_ST10300512
                 lstResults.Items.Add(ev);
         }
 
-        // filter events by category and input when search button is clicked
-        private void btnSearch_Click(object sender, EventArgs i)
+        // filter events by category and input when search button is clicked, and show recommendations
+
+        private void btnSearch_Click(object sender, EventArgs e)
         {
             var searchText = txtSearch.Text.Trim().ToLower();
             var selectedCategory = cmbCategory.Text;
@@ -63,7 +67,38 @@ namespace PROG7312_POE_ST10300512
             }
 
             DisplayEvents(results);
+
+            // track searches for recommendations
+            if (selectedCategory != "All" && !string.IsNullOrWhiteSpace(selectedCategory))
+            {
+                if (!searchHistory.ContainsKey(selectedCategory))
+                    searchHistory[selectedCategory] = 0;
+                searchHistory[selectedCategory]++;
+            }
+
+            ShowRecommendations();
         }
+
+        private void ShowRecommendations()
+        {
+            if (searchHistory.Count == 0) return;
+
+            // get most used category
+            var topCategory = searchHistory.OrderByDescending(c => c.Value).First().Key;
+
+            // find events in that category
+            var recommended = EventStore.GetEventsByCategory(topCategory)
+                                        .Take(2)
+                                        .ToList();
+
+            // displays recommendations based on category searched
+            string recommendationText = $"Based on your interest in '{topCategory}', you might also like:\n\n";
+            foreach (var ev in recommended)
+                recommendationText += $"- {ev.Title} on {ev.Date:d} at {ev.Location}\n";
+
+            lblRecom.Text = recommendationText;
+        }
+
 
         // close page
         private void btnBack_Click(object sender, EventArgs i)
