@@ -38,7 +38,7 @@
             lblTitle.Text = "Municipality Services";
             lblTitle.TextAlign = ContentAlignment.MiddleCenter;
 
-            // Report Issue button
+            // Report Issue button (Part 1)
             btnReportIssue.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnReportIssue.BackColor = Color.SeaGreen;
             btnReportIssue.ForeColor = Color.White;
@@ -60,7 +60,7 @@
             btnLocalEvents.Text = "Local Events";
             btnLocalEvents.Click += btnLocalEvents_Click;
 
-            // Service Status button (Part 3 - WIP)
+            // Service Status button (Part 3)
             btnServiceStatus.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnServiceStatus.BackColor = Color.IndianRed;
             btnServiceStatus.ForeColor = Color.White;
@@ -68,8 +68,8 @@
             btnServiceStatus.FlatAppearance.BorderSize = 0;
             btnServiceStatus.Location = new Point(280, 280);
             btnServiceStatus.Size = new Size(240, 60);
-            btnServiceStatus.Text = "Service Status (Coming Soon)";
-            btnServiceStatus.Enabled = false;
+            btnServiceStatus.Text = "Service Status";
+            btnServiceStatus.Click += btnServiceStatus_Click;
 
             // MainMenu
             BackColor = Color.WhiteSmoke;
