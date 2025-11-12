@@ -72,6 +72,16 @@ The details will appear in the "Request Details" panel.
 Choose a new, valid status from the update dropdown.
 
 Click "Update".
+<h5>Data Structure Implementation</h5>
+
+The "Service Request Status" feature uses several advanced data structures, managed by the ServiceStore.cs class, to ensure efficiency.
+
+The Binary Search Tree  stores all service requests, using the ID as its key. This provides an easy way to find reports. he Binary Search Tree performs an O(log n) search, allowing my ServiceStore.FindRequest() method to retrieve any report quickly, even if there were millions of entries. This structure is the logic behind the "Search by ID" feature.
+
+Heap (Min-Heap) A Min-Heap is implemented to manage requests based on their priority level. This structure adds efficiency, as it ensures the most urgent report is always at the root.  This allows the system to effectively organize requests, ensuring a Priority 1 requests can be processed before a Priority 3 requests and also powers the "Filter by Priority" feature.
+
+Graph is used to model the complex status workflow of a service request. Each status is a node, and the edges define the valid transitions. This provides instant validation for status changes. For example, when a user selects a "Submitted" report, the GetPossibleNextSteps() method queries the graph and finds only "Assigned" and "Cancelled" as valid next steps. These are the only options shown in the update dropdown, preventing data errors and enforcing the business logic efficiently.
+
 
 <h5>Data Storage</h5> 
 
