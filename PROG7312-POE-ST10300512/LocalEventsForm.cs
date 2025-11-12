@@ -22,6 +22,12 @@ namespace PROG7312_POE_ST10300512
             // setup dropdown and list when form loads
             PopulateCategoryList();
             DisplayEvents(EventStore.GetAllEvents());
+
+            this.chkFrom.CheckedChanged += new System.EventHandler(this.chkFrom_CheckedChanged);
+            this.chkTo.CheckedChanged += new System.EventHandler(this.chkTo_CheckedChanged);
+
+            dtFrom.Enabled = false;
+            dtTo.Enabled = false;
         }
 
         // fill category dropdown from data
@@ -43,7 +49,6 @@ namespace PROG7312_POE_ST10300512
         }
 
         // filter events by category and input when search button is clicked, and show recommendations
-
         private void btnSearch_Click(object sender, EventArgs e)
         {
             var searchText = txtSearch.Text.Trim().ToLower();
@@ -66,6 +71,22 @@ namespace PROG7312_POE_ST10300512
                     ev.Location.ToLower().Contains(searchText));
             }
 
+
+            //  Filter From date
+            if (chkFrom.Checked)
+            {
+                var fromDate = dtFrom.Value.Date;
+                results = results.Where(ev => ev.Date.Date >= fromDate);
+            }
+
+            // Filter To date
+            if (chkTo.Checked)
+            {
+                var toDate = dtTo.Value.Date;
+                results = results.Where(ev => ev.Date.Date <= toDate);
+            }
+
+
             DisplayEvents(results);
 
             // track searches for recommendations
@@ -81,22 +102,33 @@ namespace PROG7312_POE_ST10300512
 
         private void ShowRecommendations()
         {
-            if (searchHistory.Count == 0) return;
+            if (searchHistory.Count == 0)
+            {
+                lblRecom.Text = "Search by category to see recommendations here.";
+                return;
+            }
 
             // get most used category
             var topCategory = searchHistory.OrderByDescending(c => c.Value).First().Key;
 
             // find events in that category
             var recommended = EventStore.GetEventsByCategory(topCategory)
-                                        .Take(2)
-                                        .ToList();
+                                         .Take(2)
+                                         .ToList();
 
             // displays recommendations based on category searched
-            string recommendationText = $"Based on your interest in '{topCategory}', you might also like:\n\n";
-            foreach (var ev in recommended)
-                recommendationText += $"- {ev.Title} on {ev.Date:d} at {ev.Location}\n";
+            if (recommended.Any())
+            {
+                string recommendationText = $"Based on your interest in '{topCategory}', you might also like:\n\n";
+                foreach (var ev in recommended)
+                    recommendationText += $"- {ev.Title} on {ev.Date:d} at {ev.Location}\n";
 
-            lblRecom.Text = recommendationText;
+                lblRecom.Text = recommendationText;
+            }
+            else
+            {
+                lblRecom.Text = $"No other recommendations found for '{topCategory}'.";
+            }
         }
 
 
@@ -114,13 +146,22 @@ namespace PROG7312_POE_ST10300512
             var evnt = (Event)lstResults.SelectedItem;
             MessageBox.Show($"{evnt.Title}\n{evnt.Description}\n\nDate: {evnt.Date:d}\nLocation: {evnt.Location}",
                 "Event Info");
+        }
 
+        private void chkFrom_CheckedChanged(object sender, EventArgs e)
+        {
+            dtFrom.Enabled = chkFrom.Checked;
+        }
+
+        private void chkTo_CheckedChanged(object sender, EventArgs e)
+        {
+            dtTo.Enabled = chkTo.Checked;
         }
 
         private void LocalEventsForm_Load(object sender, EventArgs i)
         {
+            // You can also call this here to set the initial text
+            ShowRecommendations();
         }
     }
 }
-
-/*----------------|||||||||||||||-------------------END OF FILE----------------|||||||||||||||-------------------*/
