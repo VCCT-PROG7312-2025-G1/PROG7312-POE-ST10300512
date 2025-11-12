@@ -19,6 +19,8 @@
         private System.Windows.Forms.Label lblHeaderTitle;
         private System.Windows.Forms.GroupBox grpDetails;
         private System.Windows.Forms.GroupBox grpAttachments;
+        private System.Windows.Forms.Label lblPriority;
+        private System.Windows.Forms.ComboBox cmbPriority;
 
         protected override void Dispose(bool disposing)
         {
@@ -33,6 +35,8 @@
             txtLocation = new TextBox();
             lblCategory = new Label();
             cmbCategory = new ComboBox();
+            lblPriority = new Label();
+            cmbPriority = new ComboBox();
             lblDescription = new Label();
             rtbDescription = new RichTextBox();
             btnAttach = new Button();
@@ -52,7 +56,7 @@
             SuspendLayout();
 
             // Header panel
-            headerPanel.BackColor = Color.SteelBlue; 
+            headerPanel.BackColor = Color.SteelBlue;
             headerPanel.Dock = DockStyle.Top;
             headerPanel.Height = 70;
             headerPanel.Controls.Add(lblHeaderTitle);
@@ -68,11 +72,13 @@
             grpDetails.Text = "Issue Details";
             grpDetails.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             grpDetails.Location = new Point(40, 90);
-            grpDetails.Size = new Size(700, 220);
+            grpDetails.Size = new Size(700, 260); 
             grpDetails.Controls.Add(lblLocation);
             grpDetails.Controls.Add(txtLocation);
             grpDetails.Controls.Add(lblCategory);
             grpDetails.Controls.Add(cmbCategory);
+            grpDetails.Controls.Add(lblPriority);
+            grpDetails.Controls.Add(cmbPriority);
             grpDetails.Controls.Add(lblDescription);
             grpDetails.Controls.Add(rtbDescription);
 
@@ -82,7 +88,7 @@
             lblLocation.AutoSize = true;
 
             txtLocation.Location = new Point(120, 32);
-            txtLocation.Size = new Size(540, 23);
+            txtLocation.Size = new Size(540, 25);
 
             // Category label and combo box
             lblCategory.Text = "Category:";
@@ -90,7 +96,7 @@
             lblCategory.AutoSize = true;
 
             cmbCategory.Location = new Point(120, 72);
-            cmbCategory.Size = new Size(300, 23);
+            cmbCategory.Size = new Size(300, 25); 
             cmbCategory.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbCategory.Items.AddRange(new object[]
             {
@@ -101,18 +107,34 @@
                 "Other"
             });
 
+            // Label for Priority
+            lblPriority.Text = "Priority:";
+            lblPriority.Location = new Point(20, 115);
+            lblPriority.AutoSize = true;
+
+            // Added a combo box for Priority selection
+            cmbPriority.Location = new Point(120, 112);
+            cmbPriority.Size = new Size(300, 25);
+            cmbPriority.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbPriority.Items.AddRange(new object[]
+            {
+                "1 - High (Urgent)",
+                "2 - Medium (Normal)",
+                "3 - Low (Minor)"
+            });
+
             // Description label and rich textbox
             lblDescription.Text = "Description:";
-            lblDescription.Location = new Point(20, 115);
+            lblDescription.Location = new Point(20, 155); 
             lblDescription.AutoSize = true;
 
-            rtbDescription.Location = new Point(120, 112);
+            rtbDescription.Location = new Point(120, 152); 
             rtbDescription.Size = new Size(540, 90);
 
             // GroupBox for Attachments
             grpAttachments.Text = "Attachments";
             grpAttachments.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            grpAttachments.Location = new Point(40, 320);
+            grpAttachments.Location = new Point(40, 360); 
             grpAttachments.Size = new Size(700, 130);
             grpAttachments.Controls.Add(btnAttach);
             grpAttachments.Controls.Add(lstAttachments);
@@ -120,7 +142,7 @@
             // Attach button
             btnAttach.Text = "Attach Images/Documents";
             btnAttach.Font = new Font("Segoe UI", 9F);
-            btnAttach.BackColor = Color.SeaGreen; 
+            btnAttach.BackColor = Color.SeaGreen;
             btnAttach.ForeColor = Color.White;
             btnAttach.FlatStyle = FlatStyle.Flat;
             btnAttach.FlatAppearance.BorderSize = 0;
@@ -130,7 +152,7 @@
 
             // Attachments list
             lstAttachments.Location = new Point(240, 30);
-            lstAttachments.Size = new Size(440, 80);
+            lstAttachments.Size = new Size(440, 82); 
 
             // Submit button
             btnSubmit.Text = "Submit";
@@ -139,7 +161,7 @@
             btnSubmit.ForeColor = Color.White;
             btnSubmit.FlatStyle = FlatStyle.Flat;
             btnSubmit.FlatAppearance.BorderSize = 0;
-            btnSubmit.Location = new Point(440, 470);
+            btnSubmit.Location = new Point(440, 500); 
             btnSubmit.Size = new Size(120, 40);
             btnSubmit.Click += BtnSubmit_Click;
 
@@ -150,22 +172,22 @@
             btnBack.ForeColor = Color.White;
             btnBack.FlatStyle = FlatStyle.Flat;
             btnBack.FlatAppearance.BorderSize = 0;
-            btnBack.Location = new Point(580, 470);
+            btnBack.Location = new Point(580, 500); 
             btnBack.Size = new Size(160, 40);
             btnBack.Click += (s, e) => Close();
 
             // Progress bar and engagement label
-            progressBar.Location = new Point(40, 530);
+            progressBar.Location = new Point(40, 560); 
             progressBar.Size = new Size(700, 20);
 
             lblEngagement.Text = "Your voice matters – complete your report!";
             lblEngagement.Font = new Font("Segoe UI", 9F, FontStyle.Italic);
-            lblEngagement.Location = new Point(40, 555);
+            lblEngagement.Location = new Point(40, 585); 
             lblEngagement.AutoSize = true;
 
             // ReportIssueForm setup
             BackColor = Color.WhiteSmoke;
-            ClientSize = new Size(800, 600);
+            ClientSize = new Size(800, 620); 
             Controls.Add(headerPanel);
             Controls.Add(grpDetails);
             Controls.Add(grpAttachments);
