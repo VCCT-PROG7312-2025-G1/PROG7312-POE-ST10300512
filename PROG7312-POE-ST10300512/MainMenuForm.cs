@@ -6,7 +6,7 @@ namespace PROG7312_POE_ST10300512
         {
             InitializeComponent(); 
         }
-
+        //Part 1
         private void btnReportIssue_Click(object sender, EventArgs e)
         {
             ReportIssueForm reportForm = new ReportIssueForm();
@@ -26,3 +26,6 @@ namespace PROG7312_POE_ST10300512
         }
     }
 }
+
+
+/*----------------|||||||||||||||-------------------END OF FILE----------------|||||||||||||||-------------------*/
